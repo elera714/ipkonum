@@ -1,0 +1,133 @@
+object frmAnaSayfa: TfrmAnaSayfa
+  Left = 438
+  Height = 503
+  Top = 247
+  Width = 444
+  Caption = 'IP Konum'
+  ClientHeight = 503
+  ClientWidth = 444
+  KeyPreview = True
+  Position = poDesktopCenter
+  LCLVersion = '4.0.0.1'
+  OnShow = FormShow
+  object mvHarita: TMapView
+    Left = 0
+    Height = 440
+    Top = 40
+    Width = 444
+    Align = alClient
+    CacheLocation = clCustom
+    DownloadEngine = mvHarita.BuiltInDLE
+    DrawingEngine = mvHarita.BuiltInDE
+    Layers = <>
+    Font.Color = clBlack
+    MapProvider = 'Yandex.Maps'
+    OnDrawGpsPoint = mvHaritaDrawGpsPoint
+    OnZoomChange = mvHaritaZoomChange
+  end
+  object pnlUst: TPanel
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 444
+    Align = alTop
+    ClientHeight = 40
+    ClientWidth = 444
+    TabOrder = 1
+    object btnSorgula: TButton
+      Left = 327
+      Height = 25
+      Top = 7
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Sorgula'
+      TabOrder = 0
+      OnClick = btnSorgulaClick
+    end
+    object lblIPAdres: TLabel
+      Left = 9
+      Height = 15
+      Top = 12
+      Width = 46
+      Caption = 'IP Adresi'
+    end
+    object edtIPAdres: TEdit
+      Left = 64
+      Height = 23
+      Top = 8
+      Width = 253
+      Anchors = [akTop, akLeft, akRight]
+      TabOrder = 1
+      Text = '8.8.8.8'
+      OnKeyDown = edtIPAdresKeyDown
+    end
+    object cbDetay: TCheckBox
+      Left = 414
+      Height = 17
+      Hint = 'Detayları Görüntüle'
+      Top = 11
+      Width = 18
+      Anchors = [akTop, akRight]
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      OnChange = cbDetayChange
+    end
+  end
+  object vleDetay: TValueListEditor
+    Left = 8
+    Height = 250
+    Top = 48
+    Width = 256
+    DefaultColWidth = 95
+    FixedCols = 0
+    Flat = True
+    RowCount = 11
+    TabOrder = 2
+    Visible = False
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goAlwaysShowEditor, goThumbTracking]
+    Strings.Strings = (
+      'Ülke='
+      'Ülke Kodu='
+      'Bölge='
+      'Bölge Adı='
+      'Şehir='
+      'Enlem='
+      'Boylam='
+      'Zaman Dilimi='
+      'Servis Sağlayıcı='
+      'Organizasyon='
+    )
+    TitleCaptions.Strings = (
+      'Anahtar'
+      'Değer'
+    )
+    ColWidths = (
+      95
+      160
+    )
+  end
+  object sbDurum: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 480
+    Width = 444
+    Panels = <>
+    SimpleText = 'Büyütme Oranı: 0'
+  end
+  object IdHTTP: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.ContentRangeEnd = 0
+    Request.ContentRangeStart = 0
+    Request.ContentRangeInstanceLength = 0
+    Request.Accept = 'text/html, */*'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 168
+    Top = 232
+  end
+end
